@@ -26,7 +26,10 @@
 ## Data Source:
 - The data for this dashboard is sourced from the bank's loan management system, which tracks loan applications, disbursements, repayments, and customer details.
 
-
+## Tools
+- Microsoft SQL Server Management Studio (SSMS) : Used for data cleaning and data analysis.
+- Power BI: Used for visualization.
+  
 ## Methodology
 Data Cleaning and Preprocessing Steps:
 
@@ -35,7 +38,42 @@ Data Cleaning and Preprocessing Steps:
 - Normalization: Standardized date formats and numeric fields for consistency.
 - Aggregation: Summarized data by month, year, and other dimensions to facilitate trend analysis.
 
-## Questions:
+  ## Data Analysis
+  
+- Some questions answered in this project by code.
+
+  1 Provide a monthly analysis of our loan portfolio's performance, including loan volume, funding amount, and repayment amount.
+     
+``` SQL
+  SELECT 
+	  MONTH(issue_date) AS Month_Number, 
+	  DATENAME(MONTH, issue_date) AS Month_name, 
+	  COUNT(id) AS Total_Loan_Applications,
+	  SUM(loan_amount) AS Total_Funded_Amount,
+	  SUM(total_payment) AS Total_Amount_Received
+   FROM bank_loan_data
+    GROUP BY MONTH(issue_date), DATENAME(MONTH, issue_date)
+     ORDER BY MONTH(issue_date);
+```
+
+
+2 Provide a comprehensive analysis of our bank's loan portfolio.
+
+``` SQL
+SELECT
+    loan_status,
+        COUNT(id) AS LoanCount,
+        SUM(total_payment) AS Total_Amount_Received,
+        SUM(loan_amount) AS Total_Funded_Amount,
+        AVG(int_rate * 100) AS Interest_Rate,
+        AVG(dti * 100) AS DTI
+    FROM
+        bank_loan_data
+    GROUP BY
+        loan_status;
+```
+
+### Questions:
 
 1. What is the total number of loan applications?
 2. How much total funding has been provided by the bank?
@@ -53,7 +91,7 @@ Data Cleaning and Preprocessing Steps:
 14. What is the total loan application distribution by term length?
 15. How does home ownership status affect loan amounts received?
 
-## Answers
+## Results
 
 1. 38.6K loan applications have been submitted.
 2. The bank has funded a total of $435.8 million.
@@ -72,8 +110,7 @@ Data Cleaning and Preprocessing Steps:
 15. Mortgages accounted for the largest amount received at $238.47M, followed by rent at $201.82M.
 
   
-## Results
-Summary of Key Findings and Insights:
+## Summary of Key Findings and Insights:
 
 - Loan Performance: 86.2% of loans issued were classified as good loans, with a significant portion being fully paid or current.
 - Loan Distribution: The highest volume of loan applications and funded amounts was observed in the mid-year months, with a peak in December.
