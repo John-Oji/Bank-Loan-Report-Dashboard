@@ -42,7 +42,7 @@ Data Cleaning and Preprocessing Steps:
   
 - Some questions answered in this project by code.
 
-  1 Provide a monthly analysis of our loan portfolio's performance, including loan volume, funding amount, and repayment amount.
+1. Provide a monthly analysis of our loan portfolio's performance, including loan volume, funding amount, and repayment amount.
      
 ``` SQL
   SELECT 
@@ -56,8 +56,7 @@ Data Cleaning and Preprocessing Steps:
      ORDER BY MONTH(issue_date);
 ```
 
-
-2 Provide a comprehensive analysis of our bank's loan portfolio.
+2. Provide a comprehensive analysis of our bank's loan portfolio.
 
 ``` SQL
 SELECT
@@ -123,6 +122,8 @@ SELECT
 
 ## Recommendations
 
-- Increase efforts in promoting loan products that have a high repayment rate, such as debt consolidation and mortgage loans.
-- Keep a closer watch on loan categories with higher default rates and consider revising eligibility criteria or interest rates for these categories.
-- Consider targeting states with lower loan disbursement but higher demand potential to expand the bank's footprint.
+1. Increase efforts in promoting loan products that have a high repayment rate, such as debt consolidation and mortgage loans.
+
+2. Keep a closer watch on loan categories with higher default rates and consider revising eligibility criteria or interest rates for these categories.
+
+3. Consider targeting states with lower loan disbursement but higher demand potential to expand the bank's footprint.
